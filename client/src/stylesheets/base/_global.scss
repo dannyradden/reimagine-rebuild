@@ -1,0 +1,21 @@
+@import '../base/colors';
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.app-container {
+  width: 90%;
+  margin: auto;
+  max-width: 1170px;
+
+}

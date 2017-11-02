@@ -1,22 +1,48 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { OAuthSignInButton, SignOutButton } from 'redux-auth/default-theme';
-import { ButtonGroup } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
-const NavBar = () => (
-  <nav className="navbar">
-    <div className="container">
-      <div className="row">
-        <div className="col-md-9 navbar-header">
-          <p>
-            <Link className="home-link" to="/">
-              Recycling Request Tool
-            </Link>
-          </p>
+class Navbar extends Component {
+  renderContent() {
+    switch (this.props.auth) {
+      case null:
+        return;
+      case false:
+        return (
+          <li>
+            <a href="/auth/google">Signin With Google</a>
+          </li>
+        );
+      default:
+        return (
+          <li key="3">
+            <a href="/api/logout">Logout</a>
+          </li>
+        );
+    }
+  }
+  render() {
+    return (
+      <nav className="navbar">
+        <div className="container">
+          <div className="row">
+            <div className="col-md-9 navbar-header">
+              <p>
+                <Link className="home-link" to="/">
+                  Recycling Request Tool
+                </Link>
+              </p>
+              {this.renderContent()}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </nav>
-);
+      </nav>
+    );
+  }
+}
 
-export default NavBar;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps)(Navbar);

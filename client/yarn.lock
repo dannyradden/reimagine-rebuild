@@ -5649,6 +5649,12 @@ react-event-listener@^0.5.1:
     prop-types "^15.6.0"
     warning "^3.0.0"
 
+react-google-button@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-google-button/-/react-google-button-0.4.0.tgz#e2981318336ee15014dc090c845e9b4ed14e8973"
+  dependencies:
+    prop-types "^15.5.8"
+
 react-google-maps@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/react-google-maps/-/react-google-maps-6.3.0.tgz#ba7e0b3c2a3ad15ebdff55ecfe8c17a1c9cd8a6b"

@@ -1,31 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addSignatureToCampaign } from '../redux/actions/signature';
-// import { Link } from 'react-router';
+import GoogleButton from 'react-google-button';
 
 const SignCampaign = (props) => {
   const { auth } = props;
   const { activeCampaign } = props;
   const user = auth && auth.user;
-  // const isSignedIn = user && user.isSignedIn;
-  // const name = user && user.attributes && user.attributes.name;
-  // const email = user && user.attributes && user.attributes.email;
-  const campaignId = activeCampaign && activeCampaign.campaign && activeCampaign.campaign.id;
+  const campaignId = activeCampaign && activeCampaign.campaign && activeCampaign.campaign._id;
   const sendUserSignature = (userId, campaignId) => {
     addSignatureToCampaign(userId, campaignId);
   };
-  return (
-    <div className="sign-campaign-wrapper">
-      <h2>Show your support!</h2>
-      {/* <OAuthSignInButton
-        next={(response) => {
-          sendUserSignature(response.user.id, campaignId);
+
+  function renderContent() {
+    if (auth.data === undefined) {
+      return;
+    }
+
+    if (!auth.data.googleID) {
+      return (
+        <a className="google-button-signature" href="/auth/google">
+          <GoogleButton label="Sign in to google to sign!" />
+        </a>
+      );
+    }
+    return (
+      <button
+        className="pure-button"
+        onClick={() => {
+          sendUserSignature(user.id, campaignId);
         }}
-        provider="google"
       >
-        Google
-      </OAuthSignInButton>
-      <OAuthSignInButton provider="facebook">Facebook</OAuthSignInButton> */}
+        Sign the petition!
+      </button>
+    );
+  }
+  return (
+    <div>
+      <h1>Show your support!</h1>
+      <div className="sign-campaign-wrapper">{renderContent()}</div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import GoogleButton from 'react-google-button';
 
 class Navbar extends Component {
   renderContent() {
@@ -10,17 +11,16 @@ class Navbar extends Component {
 
     if (!this.props.auth.data.googleID) {
       return (
-        <li>
-          <a href="/auth/google">Signin With Google</a>
-        </li>
+        <a className="google-oauth-button" href="/auth/google">
+          <GoogleButton />
+        </a>
       );
     }
     return (
-      <li>
-        <a href="/api/logout">Logout</a>
-      </li>
+      <a className="google-oauth-button" href="/api/logout">
+        <GoogleButton label="Sign Out" />
+      </a>
     );
-
   }
   render() {
     return (
@@ -33,8 +33,8 @@ class Navbar extends Component {
                   Recycling Request Tool
                 </Link>
               </p>
-              {this.renderContent()}
             </div>
+            {this.renderContent()}
           </div>
         </div>
       </nav>

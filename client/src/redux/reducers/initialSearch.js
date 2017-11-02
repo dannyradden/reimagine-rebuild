@@ -25,7 +25,7 @@ let defaultState = {
 };
 
 if (stateLoader) {
-  defaultState = stateLoader.initialSearch;
+  defaultState = { error: null, ...stateLoader.initialSearch };
 }
 
 export default function (state = defaultState, action) {
@@ -108,7 +108,7 @@ export default function (state = defaultState, action) {
         ...state,
         loading: false,
         loaded: true,
-        apartments: response
+        apartments: response.data
       };
     case APARTMENTS_FAILURE:
       return {

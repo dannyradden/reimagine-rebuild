@@ -4,7 +4,7 @@ import createApiRequest from '../../utils/createApiRequest';
 export function fetchApartmentsRequest() {
   return {
     type: 'APARTMENTS',
-    promise: createApiRequest('campaigns', 'GET')
+    promise: createApiRequest('api/campaigns', 'GET')
   };
 }
 
@@ -65,7 +65,7 @@ export function searchAddressFlow(address, latLngHelper) {
 export function setCampaignInformation(campaignInfo) {
   return {
     type: 'SET_CAMPAIGN_INFORMATION',
-    promise: createApiRequest('campaigns', 'POST', { campaignInfo })
+    promise: createApiRequest('api/campaigns', 'POST', { ...campaignInfo })
   };
 }
 
@@ -86,10 +86,12 @@ export function createCampaignFailure(error) {
 export function createCampaign(campaignInfo) {
   return async (dispatch) => {
     const { response } = await dispatch(setCampaignInformation(campaignInfo));
+    console.log(response);
+
     if (response.errors) {
       dispatch(createCampaignFailure(response.errors));
     } else {
-      browserHistory.push(`/campaign/${response.id}`);
+      browserHistory.push(`/campaign/${response.data._id}`);
     }
   };
 }

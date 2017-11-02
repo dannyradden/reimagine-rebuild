@@ -12,8 +12,7 @@
     "server": "nodemon backend/index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild":
-      "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client "
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client "
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +23,7 @@
     "express": "^4.16.2",
     "lodash": "^4.17.4",
     "mongoose": "^4.12.3",
+    "mongoose-geojson-schema": "^2.1.2",
     "nodemon": "^1.12.1",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",

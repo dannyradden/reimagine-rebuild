@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.17.0",
     "css-loader": "^0.28.4",
     "geocoder": "^0.2.3",
     "lodash": "latest",
@@ -23,7 +24,6 @@
     "react-router-redux": "^4.0.8",
     "react-scripts": "1.0.13",
     "redux": "^3.7.1",
-    "redux-auth": "https://github.com/carolhealth/redux-auth",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
@@ -46,5 +46,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3001/"
+  "proxy": {
+    "/auth/google": {
+      "target": "http://localhost:5000"
+    },
+    "/api/*": {
+      "target": "http://localhost:5000"
+    }
+  }
 }

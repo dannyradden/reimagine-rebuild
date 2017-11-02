@@ -4,22 +4,23 @@ import { connect } from 'react-redux';
 
 class Navbar extends Component {
   renderContent() {
-    switch (this.props.auth) {
-      case null:
-        return;
-      case false:
-        return (
-          <li>
-            <a href="/auth/google">Signin With Google</a>
-          </li>
-        );
-      default:
-        return (
-          <li key="3">
-            <a href="/api/logout">Logout</a>
-          </li>
-        );
+    if (this.props.auth.data === undefined) {
+      return;
     }
+
+    if (!this.props.auth.data.googleID) {
+      return (
+        <li>
+          <a href="/auth/google">Signin With Google</a>
+        </li>
+      );
+    }
+    return (
+      <li>
+        <a href="/api/logout">Logout</a>
+      </li>
+    );
+
   }
   render() {
     return (

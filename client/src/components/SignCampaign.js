@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { OAuthSignInButton } from 'redux-auth/material-ui-theme';
 import { addSignatureToCampaign } from '../redux/actions/signature';
 // import { Link } from 'react-router';
 
@@ -18,7 +17,7 @@ const SignCampaign = (props) => {
   return (
     <div className="sign-campaign-wrapper">
       <h2>Show your support!</h2>
-      <OAuthSignInButton
+      {/* <OAuthSignInButton
         next={(response) => {
           sendUserSignature(response.user.id, campaignId);
         }}
@@ -26,7 +25,7 @@ const SignCampaign = (props) => {
       >
         Google
       </OAuthSignInButton>
-      <OAuthSignInButton provider="facebook">Facebook</OAuthSignInButton>
+      <OAuthSignInButton provider="facebook">Facebook</OAuthSignInButton> */}
     </div>
   );
 };

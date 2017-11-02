@@ -1,9 +1,23 @@
-import { FETCH_USER } from '../constants/auth';
+import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS, FETCH_USER_FAILURE } from '../constants/auth';
 
-export default function (state = null, action) {
-  switch (action.type) {
-    case FETCH_USER:
-      return action.payload || false;
+export default function (state = {}, action) {
+  const { response, error, type } = action;
+  console.log(type);
+  switch (type) {
+    case FETCH_USER_REQUEST:
+      return {
+        ...state
+      };
+    case FETCH_USER_SUCCESS:
+      return {
+        ...state,
+        ...response
+      };
+    case FETCH_USER_FAILURE:
+      return {
+        ...state,
+        error
+      };
     default:
       return state;
   }

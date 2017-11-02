@@ -55,8 +55,8 @@ export default function (state = defaultState, action) {
         ...state,
         loading: false,
         loaded: true,
-        nearbyCampaigns: response,
-        selectedAddress: response[0]
+        nearbyCampaigns: response.data,
+        selectedAddress: response.data[0]
       };
     case FETCH_NEARBY_CAMPAIGNS_FAILURE:
       return {
@@ -70,7 +70,7 @@ export default function (state = defaultState, action) {
       };
     case SELECT_ADDRESS: {
       const selectedAddress =
-        state.nearbyCampaigns.find(c => c.street_address === action.value) || action.value;
+        state.nearbyCampaigns.find(c => c.address === action.value) || action.value;
       return {
         ...state,
         selectedAddress,

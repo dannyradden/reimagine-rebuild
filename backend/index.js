@@ -28,6 +28,9 @@ require('./routes/authRoutes')(app);
 require('./routes/campaignRoutes')(app);
 require('./routes/signatureRoutes')(app);
 
+const path = require('path');
+console.log('aaaaaaaaaaaa', path.resolve(__dirname, '../client', 'build', 'index.html'));
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 

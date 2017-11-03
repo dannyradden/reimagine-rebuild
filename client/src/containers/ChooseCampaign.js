@@ -24,7 +24,6 @@ class ChooseCampaign extends Component {
     e.stopPropagation();
     e.preventDefault();
     const selectedOption = this.state.selectedOption;
-    console.log('You have selected:', selectedOption);
     const { selectedAddress } = this.props;
     if (selectedAddress === 'different') {
       this.props.router.push('/');

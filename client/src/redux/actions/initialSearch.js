@@ -86,8 +86,6 @@ export function createCampaignFailure(error) {
 export function createCampaign(campaignInfo) {
   return async (dispatch) => {
     const { response } = await dispatch(setCampaignInformation(campaignInfo));
-    console.log(response);
-
     if (response.errors) {
       dispatch(createCampaignFailure(response.errors));
     } else {

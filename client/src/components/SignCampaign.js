@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addSignatureToCampaign } from '../redux/actions/signature';
+
 import GoogleButton from 'react-google-button';
 
-const SignCampaign = (props) => {
-  const { auth } = props;
-  const { activeCampaign } = props;
-  const user = auth && auth.user;
-  const campaignId = activeCampaign && activeCampaign.campaign && activeCampaign.campaign._id;
-  const sendUserSignature = (userId, campaignId) => {
-    addSignatureToCampaign(userId, campaignId);
-  };
+class SignCampaign extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  function renderContent() {
-    if (auth.data === undefined) {
+  renderContent() {
+    const campaignId =
+      this.props.activeCampaign &&
+      this.props.activeCampaign.campaign &&
+      this.props.activeCampaign.campaign._id;
+
+    if (this.props.auth.data === undefined) {
       return;
     }
 
-    if (!auth.data.googleID) {
+    if (!this.props.auth.data.googleID) {
       return (
         <a className="google-button-signature" href="/auth/google">
           <GoogleButton label="Sign in to google to sign!" />
@@ -28,20 +30,22 @@ const SignCampaign = (props) => {
       <button
         className="pure-button"
         onClick={() => {
-          sendUserSignature(user.id, campaignId);
+          this.props.addSignatureToCampaign(this.props.auth.data._id, campaignId);
         }}
       >
         Sign the petition!
       </button>
     );
   }
-  return (
-    <div>
-      <h1>Show your support!</h1>
-      <div className="sign-campaign-wrapper">{renderContent()}</div>
-    </div>
-  );
-};
+  render() {
+    return (
+      <div>
+        <h1>Show your support!</h1>
+        <div>{this.renderContent()}</div>
+      </div>
+    );
+  }
+}
 
 export default connect(({ auth, activeCampaign }) => ({ auth, activeCampaign }), {
   addSignatureToCampaign

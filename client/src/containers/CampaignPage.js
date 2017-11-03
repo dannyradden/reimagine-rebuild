@@ -13,14 +13,6 @@ class CampaignPage extends Component {
     this.props.fetchCampaignById(this.props.params.id);
     this.props.fetchSignatures(this.props.params.id);
   }
-  componentDidUpdate() {
-    console.log('parent updated!');
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('scu parent', nextProps);
-    return true;
-  }
 
   render() {
     const { activeCampaign: { loading, loaded, campaign } } = this.props;

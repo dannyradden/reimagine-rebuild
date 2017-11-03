@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class SignatureList extends Component {
-  ComponentDidUpdate() {
-    console.log('child updatedddddd');
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('scu child', nextProps);
-    return true;
-  }
   render() {
     return (
       <div className="sign-campaign-wrapper">

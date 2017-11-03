@@ -2,7 +2,6 @@ import { FETCH_USER_REQUEST, FETCH_USER_SUCCESS, FETCH_USER_FAILURE } from '../c
 
 export default function (state = {}, action) {
   const { response, error, type } = action;
-  console.log(type);
   switch (type) {
     case FETCH_USER_REQUEST:
       return {

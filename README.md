@@ -1,15 +1,3 @@
-## Feedbacker
+Denver Re:Imagine is a Recycling App that I am working on with Code for Denver.
 
-A sample survey mailing APP.
-
-Techstack:
-
-- React & Redux
-- Express
-- NodeJS
-- MongoDB
-
-- Google OAuth
-- Stripe
-
-- Heroku Deployment
+As it was, Rails and React were being hosted on the same heroku server, but the React assets were not being served up  directly by Rails. This leads to quite a few complications, especially when it comes to routing. Rails was also bloated and leading to other problems. I decided to scrap Rails and SQL and replace it with Node and MongoDB. I used a small previous Node and React project as a boilerplate and then went from there. The final result is MUCH smoother, smaller, and does not have the same problems that Rails was having. I know the commit history is pretty terrible, please dont judge too harshly :D
